@@ -126,6 +126,24 @@ if ($cropperOptions['preview'] !== false) {
         position: relative;   
         cursor: pointer;     
     }*/
+    #canvas-wrapper-'.$uniqueId.' {
+        height: 300px;
+    }
+    @media screen and (min-height: 700px) {
+        #canvas-wrapper-'.$uniqueId.' {
+            height: 400px;
+        }
+    }
+    @media screen and (min-height: 800px) {
+        #canvas-wrapper-'.$uniqueId.' {
+            height: 500px;
+        }
+    }
+    @media screen and (min-height: 900px) {
+        #canvas-wrapper-'.$uniqueId.' {
+            height: 600px;
+        }
+    }
     #cropper-modal-'.$uniqueId.' img{
         max-width: 100%;
     }
@@ -167,7 +185,6 @@ if ($cropperOptions['preview'] !== false) {
         color: #fff;
     }
 ') ?>
-
 
 <?php
 $modal = $this->render('modal', [
@@ -238,8 +255,7 @@ $this->registerJs(<<<JS
             options_$uniqueId.inputData.height.val(Math.round(e.height));
             options_$uniqueId.inputData.X.val(Math.round(e.x));
             options_$uniqueId.inputData.Y.val(Math.round(e.y));                
-            
-            
+
             if (options_$uniqueId.data.width < options_$uniqueId.data.cropWidth) {
                 options_$uniqueId.element.modal.find('.width-warning').removeClass('has-success').addClass('has-error');
             } else {
@@ -257,8 +273,7 @@ $this->registerJs(<<<JS
             options_$uniqueId.croppable = true;
         }
     }
-    
-    
+
     // input file change
     options_$uniqueId.input.crop.change(function(event) {
         // cropper reset
@@ -274,10 +289,7 @@ $this->registerJs(<<<JS
         // cropper start
         options_$uniqueId.element.image.cropper(cropper_options_$uniqueId);        
     });
-    
-    
-    
-    
+
     var imageUrl_$uniqueId = '$imageUrl';
     var setElement_$uniqueId = function(src) {
         options_$uniqueId.element.modal.find('.modal-body > div').html('<img src="' + src + '" id="cropper-image-$uniqueId">');
@@ -300,8 +312,8 @@ $this->registerJs(<<<JS
             setElement_$uniqueId(_val);
             options_$uniqueId.element.modal.modal('show'); 
         }
-        
     });
+
     options_$uniqueId.element.modal.on('shown.bs.modal', function() {        
         if (imageUrl_$uniqueId !== '') {
             // cropper start
@@ -310,9 +322,6 @@ $this->registerJs(<<<JS
         }       
     });
 
-    
-    
-    
     function setCrop$uniqueId() {        
         if (!options_$uniqueId.croppable) {
             return;
@@ -325,7 +334,6 @@ $this->registerJs(<<<JS
         options_$uniqueId.input.model.attr('type', 'text');        
         options_$uniqueId.input.model.val(options_$uniqueId.croppedCanvas.toDataURL());
     }
-    
 
     options_$uniqueId.button.crop.click(function() { setCrop$uniqueId(); });
     options_$uniqueId.button.close.click(function() { setCrop$uniqueId(); });
@@ -335,11 +343,6 @@ $this->registerJs(<<<JS
             options_$uniqueId.input.crop.click();
         }
     });
-    
-    
-     
-    
-    
 
     options_$uniqueId.element.modal.find('.move-left').click(function() { 
         if (!options_$uniqueId.croppable) return;

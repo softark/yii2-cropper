@@ -15,7 +15,6 @@ $closeLabel = $cropperOptions['icons']['close'] . ' ' . Yii::t('cropper', 'Crop'
 
 $cropWidth = $cropperOptions['width'];
 $cropHeight = $cropperOptions['height'];
-$canvasHeight = $modalOptions['canvasHeight'];
 ?>
 <div class="modal fade" tabindex="-1" role="dialog" id="cropper-modal-<?= $unique ?>">
     <div class="modal-dialog modal-lg" role="document">
@@ -25,7 +24,7 @@ $canvasHeight = $modalOptions['canvasHeight'];
                 <h4 class="modal-title" id="modalLabel-<?=$unique ?>"><?= $modalLabel ?></h4>
             </div>
             <div class="modal-body">
-                <div style="height:<?= $canvasHeight ?>px"><img id="cropper-image-<?= $unique ?>" src="" alt=""></div>
+                <div id="canvas-wrapper-<?= $unique ?>"><img id="cropper-image-<?= $unique ?>" src="" alt=""></div>
             </div>
             <div class="modal-footer">
                 <div class="row" style="margin-bottom: 10px">
