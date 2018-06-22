@@ -10,7 +10,7 @@
 /** @var $cropperOptions mixed */
 /** @var $jsOptions mixed */
 /** @var $template string */
-
+/** @var $modalOptions [] */
 
 use yii\bootstrap\Html;
 use yii\web\View;
@@ -40,8 +40,7 @@ $cropHeight = $cropperOptions['height'];
 $aspectRatio = $cropWidth / $cropHeight;
 $browseLabel = $cropperOptions['icons']['browse'] . ' ' . Yii::t('cropper', 'Browse');
 $cropLabel = $cropperOptions['icons']['crop'] . ' ' . Yii::t('cropper', 'Crop');
-$closeLabel = $cropperOptions['icons']['close'] . ' ' . Yii::t('cropper', 'Crop') . ' & ' . Yii::t('cropper', 'Close');
-if ($label !== false) $browseLabel = $cropperOptions['icons']['browse'] . ' ' . $label;
+$closeLabel = $cropperOptions['icons']['close'] . ' ' . Yii::t('cropper', 'Crop') . ' &amp; ' . Yii::t('cropper', 'Close');
 
 // button template
 $buttonContent = Html::button($browseLabel, [
@@ -62,7 +61,7 @@ if ($cropperOptions['preview'] !== false) {
     $previewHeight = $previewOptions['height'];
 
     $previewImage = Html::img($src, ['id' => 'cropper-image-'.$uniqueId, 'style' => "width: $previewWidth; height: $previewHeight;"]);
-    $previewContent = '<div class="cropper-container clearfix">' .
+    $previewContent = '<div class="cropper-container">' .
         Html::tag('div', $previewImage, [
             'id' => 'cropper-result-'.$uniqueId,
             'class' => 'cropper-result',
@@ -70,7 +69,7 @@ if ($cropperOptions['preview'] !== false) {
             'data-buttonid' => 'cropper-select-button-' . $uniqueId,
             'onclick' => 'js: $("#cropper-select-button-'.$uniqueId.'").click()',
         ]) .
-    '</div>';
+        '</div>';
 } else {
     $previewContent = Html::img(null, ['class' => 'hidden', 'id' => 'cropper-image-'.$uniqueId]);
 }
@@ -97,7 +96,7 @@ $template = str_replace('{button}',  $input . $buttonContent, $template);
 $template = str_replace('{preview}', $previewContent, $template);
 ?>
 
-<div class="cropper-wrapper clearfix">
+<div class="cropper-wrapper">
     <?php echo $template ?>
     <?= Html::hiddenInput('url-change-input-' . $uniqueId, '', [
         'id' => 'cropper-url-change-input-' . $uniqueId,
@@ -174,8 +173,9 @@ if ($cropperOptions['preview'] !== false) {
 $modal = $this->render('modal', [
     'unique' => $uniqueId,
     'cropperOptions' => $cropperOptions,
+    'modalOptions' => $modalOptions,
 ]);
-
+$modal = preg_replace('/\n\s*/', '', $modal);
 
 $this->registerJs(<<<JS
 

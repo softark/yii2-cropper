@@ -84,6 +84,18 @@ class Cropper extends InputWidget
      */
     public $template = '{button} {preview}';
 
+    /**
+     * @var array
+     */
+    public $modalOptions = [
+        'canvasHeight' => 600,
+        'doubleClickDesc' => false,
+        'posDisp' => false,
+        'zoomEnabled' => false,
+        'rotateEnabled' => false,
+        'moveEnabled' => false,
+    ];
+
     public function init()
     {
         parent::init();
@@ -100,23 +112,25 @@ class Cropper extends InputWidget
     {
         parent::run();
 
+        /*
         $this->view->registerCss('
             label[for='.$this->options['id'].'] {
                 display: none;
             }
         ');
+        */
 
         return $this->render('cropper', [
             'model' => $this->model,
             'attribute' => $this->attribute,
             'name' => isset($this->name) ? $this->name : null,
             'value' => $this->value,
-            'label' => $this->label,
             'uniqueId' => $this->uniqueId,
             'imageUrl' => $this->imageUrl,
             'cropperOptions' => $this->cropperOptions,
             'jsOptions' => $this->jsOptions,
             'template' => $this->template,
+            'modalOptions' => $this->modalOptions,
         ]);
     }
 
