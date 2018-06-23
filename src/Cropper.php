@@ -182,7 +182,8 @@ class Cropper extends InputWidget
         if (!isset($options['buttonCssClass'])) $options['buttonCssClass'] = 'btn btn-primary';
         if (!isset($options['icons']['browse'])) $options['icons']['browse'] = '<i class="fa fa-image"></i>';
         if (!isset($options['icons']['crop'])) $options['icons']['crop'] = '<i class="fa fa-crop"></i>';
-        if (!isset($options['icons']['close'])) $options['icons']['close'] = '<i class="fa fa-crop"></i>';
+        if (!isset($options['icons']['close'])) $options['icons']['ok'] = '<i class="fa fa-check"></i>';
+        if (!isset($options['icons']['cancel'])) $options['icons']['cancel'] = '<i class="fa fa-close"></i>';
         if (!isset($options['icons']['zoom-in'])) $options['icons']['zoom-in'] = '<i class="fa fa-search-plus"></i>';
         if (!isset($options['icons']['zoom-out'])) $options['icons']['zoom-out'] = '<i class="fa fa-search-minus"></i>';
         if (!isset($options['icons']['rotate-left'])) $options['icons']['rotate-left'] = '<i class="fa fa-rotate-left"></i>';

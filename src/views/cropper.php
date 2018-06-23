@@ -39,8 +39,8 @@ $cropWidth = $cropperOptions['width'];
 $cropHeight = $cropperOptions['height'];
 $aspectRatio = $cropWidth / $cropHeight;
 $browseLabel = $cropperOptions['icons']['browse'] . ' ' . Yii::t('cropper', 'Browse');
-$cropLabel = $cropperOptions['icons']['crop'] . ' ' . Yii::t('cropper', 'Crop');
-$closeLabel = $cropperOptions['icons']['close'] . ' ' . Yii::t('cropper', 'Crop') . ' &amp; ' . Yii::t('cropper', 'Close');
+$okLabel = $cropperOptions['icons']['ok'] . ' ' . Yii::t('cropper', 'OK');
+$cancelLabel = $cropperOptions['icons']['cancel'] . ' ' . Yii::t('cropper', 'Cancel');
 
 // button template
 $buttonContent = Html::button($browseLabel, [
@@ -217,7 +217,8 @@ $this->registerJs(<<<JS
         
         button: {
             crop: $('#crop-button-$uniqueId'),
-            close: $('#close-button-$uniqueId')
+            close: $('#close-button-$uniqueId'),
+            cancel: $('#cancel-button-$uniqueId')
         },
         
         data: {

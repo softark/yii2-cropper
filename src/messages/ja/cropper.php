@@ -5,6 +5,8 @@ return [
     'Browse' => '画像ファイルを選択',
     'Crop' => '切り抜き',
     'Close' => '完了',
+    'OK' => 'OK',
+    'Cancel' => 'キャンセル',
     'Width' => '幅',
     'Height' => '高さ',
     'Either "cropWidth" and "cropHeight" properties must be specified.' => '"cropWidth" または "cropHeight" のどちらかを指定する必要があります。',

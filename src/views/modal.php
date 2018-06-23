@@ -10,8 +10,8 @@
 
 $modalLabel = Yii::t('cropper', 'Image Crop Editor');
 $browseLabel = $cropperOptions['icons']['browse'] . ' ' . Yii::t('cropper', 'Browse');
-$cropLabel = $cropperOptions['icons']['crop'] . ' ' . Yii::t('cropper', 'Crop');
-$closeLabel = $cropperOptions['icons']['close'] . ' ' . Yii::t('cropper', 'Crop') . ' &amp; ' . Yii::t('cropper', 'Close');
+$okLabel = $cropperOptions['icons']['ok'] . ' ' . Yii::t('cropper', 'OK');
+$cancelLabel = $cropperOptions['icons']['cancel'] . ' ' . Yii::t('cropper', 'Cancel');
 
 $cropWidth = $cropperOptions['width'];
 $cropHeight = $cropperOptions['height'];
@@ -90,7 +90,8 @@ $cropHeight = $cropperOptions['height'];
                         </div>
                     </div>
                 <?php endif ?>
-                <button type="button" id="close-button-<?=  $unique ?>" class="btn btn-success" data-dismiss="modal"><?= $cropLabel ?></button>
+                <button type="button" id="cancel-button-<?=  $unique ?>" class="btn" data-dismiss="modal"><?= $cancelLabel ?></button>
+                <button type="button" id="close-button-<?=  $unique ?>" class="btn btn-primary" data-dismiss="modal"><?= $okLabel ?></button>
             </div>
         </div>
     </div>
