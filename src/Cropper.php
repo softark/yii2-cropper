@@ -203,6 +203,7 @@ class Cropper extends InputWidget
     {
         $previewWidth = 100;
         $previewHeight = 100;
+        $defaultSize = 100;
 
         if (!isset($options['preview']['width'])) {
             $previewWidth = ($options['width'] >= 100) ? $options['width'] : $defaultSize;
