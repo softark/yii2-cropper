@@ -88,6 +88,7 @@ class Cropper extends InputWidget
      * @var array
      */
     public $modalOptions = [
+        'title' => '',
         'doubleClickDesc' => false,
         'posDisp' => false,
         'zoomEnabled' => false,

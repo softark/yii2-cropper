@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Image Crop Editor' => '顔写真切り抜き',
+    'Image Crop Editor' => '画像切り抜き',
     'Browse' => '画像ファイルを選択',
     'Crop' => '切り抜き',
     'Close' => '完了',

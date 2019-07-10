@@ -8,7 +8,7 @@
 /** @var $cropperOptions [] */
 /** @var $modalOptions [] */
 
-$modalLabel = Yii::t('cropper', 'Image Crop Editor');
+$modalLabel = !empty($modalOptions['title']) ? $modalOptions['title'] : Yii::t('cropper', 'Image Crop Editor');
 $browseLabel = $cropperOptions['icons']['browse'] . ' ' . Yii::t('cropper', 'Browse');
 $okLabel = $cropperOptions['icons']['ok'] . ' ' . Yii::t('cropper', 'OK');
 $cancelLabel = $cropperOptions['icons']['cancel'] . ' ' . Yii::t('cropper', 'Cancel');
