@@ -91,8 +91,10 @@ class Cropper extends InputWidget
         'title' => '',
         'doubleClickDesc' => false,
         'posDisp' => false,
+        'sizeDisp' => false,
         'zoomEnabled' => false,
         'rotateEnabled' => false,
+        'flipEnabled' => false,
         'moveEnabled' => false,
     ];
 
@@ -105,20 +107,13 @@ class Cropper extends InputWidget
         $this->i18n();
         $this->setJsOptions();
         $this->setCropperOptions();
+        $this->setModalOptions();
         $this->setInputLabel();
     }
 
     public function run()
     {
         parent::run();
-
-        /*
-        $this->view->registerCss('
-            label[for='.$this->options['id'].'] {
-                display: none;
-            }
-        ');
-        */
 
         return $this->render('cropper', [
             'model' => $this->model,
@@ -197,6 +192,22 @@ class Cropper extends InputWidget
         if (!isset($options['icons']['move-down'])) $options['icons']['move-down'] = '<i class="fa fa-arrow-down"></i>';
 
         $this->cropperOptions = $options;
+    }
+
+    private function setModalOptions()
+    {
+        $options = $this->modalOptions;
+
+        if (!isset($options['title'])) $options['title'] = '';
+        if (!isset($options['doubleClickDesc'])) $options['doubleClickDesc'] = false;
+        if (!isset($options['posDisp'])) $options['posDisp'] = false;
+        if (!isset($options['sizeDisp'])) $options['sizeDisp'] = false;
+        if (!isset($options['zoomEnabled'])) $options['zoomEnabled'] = false;
+        if (!isset($options['rotateEnabled'])) $options['rotateEnabled'] = false;
+        if (!isset($options['flipEnabled'])) $options['flipEnabled'] = false;
+        if (!isset($options['moveEnabled'])) $options['moveEnabled'] = false;
+
+        $this->modalOptions = $options;
     }
 
     private function getPreviewSizes($options)

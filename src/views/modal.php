@@ -20,8 +20,9 @@ $cropHeight = $cropperOptions['height'];
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="modalLabel-<?=$unique ?>"><?= $modalLabel ?></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="modalLabel-<?= $unique ?>"><?= $modalLabel ?></h4>
             </div>
             <div class="modal-body">
                 <div id="canvas-wrapper-<?= $unique ?>"><img id="cropper-image-<?= $unique ?>" src="" alt=""></div>
@@ -31,7 +32,8 @@ $cropHeight = $cropperOptions['height'];
                     <?php if ($modalOptions['doubleClickDesc']): ?>
                         <div class="col-xs-12 text-left">
                             <div class="alert alert-warning alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+                                </button>
                                 <?= Yii::t('cropper', 'Double click: toggle between "move image" or "redraw area"') ?>
                             </div>
                         </div>
@@ -51,6 +53,10 @@ $cropHeight = $cropperOptions['height'];
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary rotate-left"><?= $cropperOptions['icons']['rotate-left'] ?></button>
                             <button type="button" class="btn btn-primary rotate-right"><?= $cropperOptions['icons']['rotate-right'] ?></button>
+                        </div>&nbsp;
+                    <?php endif ?>
+                    <?php if ($modalOptions['flipEnabled']): ?>
+                        <div class="btn-group">
                             <button type="button" class="btn btn-primary flip-horizontal"><?= $cropperOptions['icons']['flip-horizontal'] ?></button>
                             <button type="button" class="btn btn-primary flip-vertical"><?= $cropperOptions['icons']['flip-vertical'] ?></button>
                         </div>&nbsp;
@@ -64,18 +70,20 @@ $cropHeight = $cropperOptions['height'];
                         </div>
                     <?php endif ?>
                 </div>
-                <div class="col-sm-3">
-                    <div class="input-group input-group-sm width-warning">
-                        <label class="input-group-addon" for="dataWidth-<?= $unique ?>"><?= Yii::t('cropper', 'Width') ?> (<?= $cropWidth ?>px)</label>
-                        <input type="text" class="form-control" id="dataWidth-<?= $unique ?>" placeholder="width"><span class="input-group-addon">px</span>
+                <?php if ($modalOptions['sizeDisp']): ?>
+                    <div class="col-sm-3">
+                        <div class="input-group input-group-sm width-warning">
+                            <label class="input-group-addon" for="dataWidth-<?= $unique ?>"><?= Yii::t('cropper', 'Width') ?> (<?= $cropWidth ?> px)</label>
+                            <input type="text" class="form-control" id="dataWidth-<?= $unique ?>" placeholder="width"><span class="input-group-addon">px</span>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="input-group input-group-sm height-warning">
-                        <label class="input-group-addon" for="dataHeight-<?= $unique ?>"><?= Yii::t('cropper', 'Height') ?> (<?= $cropHeight ?>px)</label>
-                        <input type="text" class="form-control" id="dataHeight-<?= $unique ?>" placeholder="height"><span class="input-group-addon">px</span>
+                    <div class="col-sm-3">
+                        <div class="input-group input-group-sm height-warning">
+                            <label class="input-group-addon" for="dataHeight-<?= $unique ?>"><?= Yii::t('cropper', 'Height') ?>(<?= $cropHeight ?> px)</label>
+                            <input type="text" class="form-control" id="dataHeight-<?= $unique ?>" placeholder="height"><span class="input-group-addon">px</span>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
                 <?php if ($modalOptions['posDisp']): ?>
                     <div class="col-sm-3">
                         <div class="input-group input-group-sm">
@@ -90,8 +98,8 @@ $cropHeight = $cropperOptions['height'];
                         </div>
                     </div>
                 <?php endif ?>
-                <button type="button" id="cancel-button-<?=  $unique ?>" class="btn" data-dismiss="modal"><?= $cancelLabel ?></button>
-                <button type="button" id="close-button-<?=  $unique ?>" class="btn btn-primary" data-dismiss="modal"><?= $okLabel ?></button>
+                <button type="button" id="cancel-button-<?= $unique ?>" class="btn" data-dismiss="modal"><?= $cancelLabel ?></button>
+                <button type="button" id="close-button-<?= $unique ?>" class="btn btn-primary" data-dismiss="modal"><?= $okLabel ?></button>
             </div>
         </div>
     </div>

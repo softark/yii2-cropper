@@ -37,7 +37,7 @@ switch ($jsOptions['pos']) {
 
 $cropWidth = $cropperOptions['width'];
 $cropHeight = $cropperOptions['height'];
-$aspectRatio = $cropWidth / $cropHeight;
+$aspectRatio = ((isset($cropperOptions['aspectRatio']) && $cropperOptions['aspectRatio'] == 0) || $cropperOptions['height'] == 0 ) ? 0 : $cropWidth / $cropHeight;
 $browseLabel = $cropperOptions['icons']['browse'] . ' ' . Yii::t('cropper', 'Browse');
 $okLabel = $cropperOptions['icons']['ok'] . ' ' . Yii::t('cropper', 'OK');
 $cancelLabel = $cropperOptions['icons']['cancel'] . ' ' . Yii::t('cropper', 'Cancel');
