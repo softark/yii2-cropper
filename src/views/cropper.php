@@ -34,13 +34,14 @@ switch ($jsOptions['pos']) {
         break;
 }
 
-
 $cropWidth = $cropperOptions['width'];
 $cropHeight = $cropperOptions['height'];
 $aspectRatio = ((isset($cropperOptions['aspectRatio']) && $cropperOptions['aspectRatio'] == 0) || $cropperOptions['height'] == 0 ) ? 0 : $cropWidth / $cropHeight;
 $browseLabel = $cropperOptions['icons']['browse'] . ' ' . Yii::t('cropper', 'Browse');
 $okLabel = $cropperOptions['icons']['ok'] . ' ' . Yii::t('cropper', 'OK');
 $cancelLabel = $cropperOptions['icons']['cancel'] . ' ' . Yii::t('cropper', 'Cancel');
+$rotateDeg = $cropperOptions['rotateDeg'];
+$rotateDegRev = -$rotateDeg;
 
 // button template
 $buttonContent = Html::button($browseLabel, [
@@ -371,11 +372,11 @@ $this->registerJs(<<<JS
     });
     options_$uniqueId.element.modal.find('.rotate-left').click(function() { 
         if (!options_$uniqueId.croppable) return;
-        options_$uniqueId.element.image.cropper('rotate', -15);
+        options_$uniqueId.element.image.cropper('rotate', $rotateDegRev);
     });
     options_$uniqueId.element.modal.find('.rotate-right').click(function() { 
         if (!options_$uniqueId.croppable) return;
-        options_$uniqueId.element.image.cropper('rotate', 15); 
+        options_$uniqueId.element.image.cropper('rotate', $rotateDeg); 
     });
     options_$uniqueId.element.modal.find('.flip-horizontal').click(function() { 
         if (!options_$uniqueId.croppable) return;

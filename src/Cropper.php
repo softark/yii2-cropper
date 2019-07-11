@@ -173,6 +173,7 @@ class Cropper extends InputWidget
             $options['preview'] = false;
         }
 
+        if (!isset($options['rotateDeg'])) $options['rotateDeg'] = 90;
 
         // button & icons options
         if (!isset($options['buttonCssClass'])) $options['buttonCssClass'] = 'btn btn-primary';
